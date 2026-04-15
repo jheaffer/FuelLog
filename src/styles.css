@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+.recommendation-card {
+  background: #f0f7ff;
+  border: 2px solid #007bff;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.highlight-box {
+  background: #d4edda;
+  color: #155724;
+  padding: 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  border-left: 5px solid #28a745;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+th { background-color: #343a40; color: white; padding: 10px; }
+td { border-bottom: 1px solid #ddd; padding: 10px; text-align: center; }

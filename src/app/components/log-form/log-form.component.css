@@ -1,0 +1,42 @@
+.form-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+  max-width: 500px;
+}
+
+h2 { color: #1a1a1a; margin-bottom: 0.5rem; }
+.dev-note { color: #666; font-size: 0.85rem; margin-bottom: 1.5rem; }
+
+.form-group { margin-bottom: 1.2rem; }
+
+label { display: block; font-weight: 600; margin-bottom: 0.4rem; color: #444; }
+
+input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+input:focus { border-color: #007bff; outline: none; }
+
+.submit-btn {
+  width: 100%;
+  padding: 1rem;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.submit-btn:disabled { background: #ccc; cursor: not-allowed; }
+.submit-btn:hover:not(:disabled) { background: #0056b3; }
+
+.error-msg { color: #dc3545; font-size: 0.85rem; margin-top: 1rem; }
