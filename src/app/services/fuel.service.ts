@@ -9,21 +9,19 @@ export class FuelService {
   logs = signal<any[]>([]);
   stations = signal<any[]>([]);
 
-  // 1. ADD THIS FUNCTION - It connects the form to the backend
-  addLog(log: any) {
-    this.http.post<any>(`${this.apiUrl}/logs`, log).subscribe({
-      next: (newLog) => {
-        // This updates the UI instantly without refreshing
-        this.logs.update(current => [newLog, ...current]);
-        alert('Log added to MongoDB!');
-      },
-      error: (err) => console.error('Could not save log:', err)
-    });
-  }
-
-  // Ensure this exists for your Dashboard/Price Recommender
   loadAllData() {
     this.http.get<any[]>(`${this.apiUrl}/logs`).subscribe(data => this.logs.set(data));
-    this.http.get<any[]>(`${this.apiUrl}/prices`).subscribe(data => this.stations.set(data));
+    this.loadNearbyStations(16.4023, 120.5960);
+  }
+
+  loadNearbyStations(lat: number, lon: number) {
+    this.http.get<any[]>(`${this.apiUrl}/nearby-stations?lat=${lat}&lon=${lon}`)
+      .subscribe(data => this.stations.set(data));
+  }
+
+  addLog(log: any) {
+    this.http.post(`${this.apiUrl}/logs`, log).subscribe(newLog => {
+      this.logs.update(all => [newLog, ...all]);
+    });
   }
 }

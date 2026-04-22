@@ -1,12 +1,10 @@
-<div class="recommender-card">
-  <h3>Latest Local Fuel Prices</h3>
-  
-  @for (station of fuelService.stations(); track station._id) {
-    <div class="station-item">
-      <span>{{ station.name }}</span>: 
-      <strong>₱{{ station.price }}</strong>
+<div class="card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+        <h3 style="margin: 0;">Gas Station Locator</h3>
+        <div style="font-size: 12px; font-weight: bold;">
+          <span style="color: #ff4444;">●</span> Selected Point 
+          <span style="color: #3388ff; margin-left: 10px;">●</span> Gas Station
+        </div>
+      </div>
+      <div id="map" style="height: 450px; width: 100%; border-radius: 12px; border: 1px solid #ccc;"></div>
     </div>
-  } @empty {
-    <p>Loading latest prices from API...</p>
-  }
-</div>
