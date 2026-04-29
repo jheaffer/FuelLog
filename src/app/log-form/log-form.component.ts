@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { FuelService } from '../../services/fuel.service';
+import { FuelService } from '../services/fuel.service';
 
 @Component({
   selector: 'app-log-form',
@@ -13,7 +13,7 @@ export class LogFormComponent {
   entry = { stationName: '', liters: 0, cost: 0 };
 
   save() {
-    this.fuelService.addLog({...this.entry});
+    this.fuelService.addLog({ ...this.entry });
     this.entry = { stationName: '', liters: 0, cost: 0 };
   }
 }

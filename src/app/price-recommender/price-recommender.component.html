@@ -1,0 +1,90 @@
+<div class="recommender-wrapper" [class.dark]="isDarkMode" [class.light]="!isDarkMode">
+
+  <!-- SPLASH SCREEN: idle state -->
+  <div class="map-splash" [class.hidden]="mapOpened">
+
+    <div class="splash-meta">
+      <span>⛽ 5,631 stations</span>
+      <span class="dot">·</span>
+      <span>153 cities</span>
+      <span class="dot">·</span>
+      <span>Updated {{ today | date:'MMMM d, y' }}</span>
+    </div>
+
+    <h1 class="splash-title">Fuel Prices Today<br>in the Philippines</h1>
+
+    <!-- STEP 1: Initial button -->
+    <div class="splash-actions" [class.hidden]="locationStatus !== 'idle'">
+      <button class="open-map-btn" (click)="requestLocation()">
+        <span>📍</span> Open Live Map
+      </button>
+      <button class="toggle-btn" (click)="toggleDarkMode()">
+        {{ isDarkMode ? '☀️' : '🌙' }}
+      </button>
+    </div>
+
+    <!-- STEP 2: Location permission prompt -->
+    <div class="location-prompt" [class.hidden]="locationStatus !== 'asking'">
+      <div class="location-icon">📡</div>
+      <p class="location-title">Allow Location Access?</p>
+      <p class="location-desc">
+        We'll use your location to show nearby fuel stations and prices. 
+        You can skip this and browse manually.
+      </p>
+      <div class="location-actions">
+        <button class="btn-allow" (click)="allowLocation()">
+          📍 Allow Location
+        </button>
+        <button class="btn-skip" (click)="skipLocation()">
+          Skip
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 3: Locating spinner -->
+    <div class="location-locating" [class.hidden]="locationStatus !== 'locating'">
+      <div class="spinner"></div>
+      <p>Getting your location...</p>
+    </div>
+
+    <!-- STEP 4: Location denied fallback -->
+    <div class="location-denied" [class.hidden]="locationStatus !== 'denied'">
+      <div class="denied-icon">⚠️</div>
+      <p class="location-title">Location Access Denied</p>
+      <p class="location-desc">
+        No worries! You can still browse the map and click anywhere to find nearby stations.
+      </p>
+      <div class="location-actions">
+        <button class="open-map-btn" (click)="skipLocation()">
+          🗺️ Continue Anyway
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 5: Location granted — ready to open map -->
+    <div class="location-granted" [class.hidden]="locationStatus !== 'granted'">
+      <div class="granted-icon">✅</div>
+      <p class="location-title">Location Ready!</p>
+      <p class="location-desc">We found your location. Opening map centered on you.</p>
+      <div class="location-actions">
+        <button class="open-map-btn" (click)="openMap()">
+          🗺️ Open Live Map
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MAP VIEW -->
+  <div class="map-view" [class.hidden]="!mapOpened">
+    <div class="map-toolbar">
+      <span class="map-label">📍 Live Fuel Station Map</span>
+      <button class="toggle-btn" (click)="toggleDarkMode()">
+        {{ isDarkMode ? '☀️' : '🌙' }}
+      </button>
+    </div>
+    <div id="map"></div>
+    <p class="map-hint">Click anywhere on the map to find nearby fuel stations.</p>
+  </div>
+
+</div>

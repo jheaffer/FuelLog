@@ -1,4 +1,4 @@
-import { Injectable, signal, computed, inject } from '@angular/core';
+import { Injectable, signal, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
@@ -21,7 +21,7 @@ export class FuelService {
 
   addLog(log: any) {
     this.http.post(`${this.apiUrl}/logs`, log).subscribe(newLog => {
-      this.logs.update(all => [newLog, ...all]);
+      this.logs.update(all => [newLog as any, ...all]);
     });
   }
 }

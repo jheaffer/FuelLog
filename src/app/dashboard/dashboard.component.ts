@@ -1,5 +1,5 @@
 import { Component, inject, OnInit, computed } from '@angular/core';
-import { FuelService } from '../../services/fuel.service';
+import { FuelService } from '../services/fuel.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,8 +9,7 @@ import { FuelService } from '../../services/fuel.service';
 export class DashboardComponent implements OnInit {
   public fuelService = inject(FuelService);
 
-  // Computed signal for total expenses
-  totalSpent = computed(() => 
+  totalSpent = computed(() =>
     this.fuelService.logs().reduce((sum, log) => sum + log.cost, 0)
   );
 

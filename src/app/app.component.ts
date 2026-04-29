@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 // 1. IMPORT the child components here
-import { LogFormComponent } from './components/log-form/log-form.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { PriceRecommenderComponent } from './components/price-recommender/price-recommender.component';
+import { LogFormComponent } from './log-form/log-form.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { PriceRecommenderComponent } from './price-recommender/price-recommender.component';
 
 @Component({
   selector: 'app-root',
